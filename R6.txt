@@ -1,0 +1,20 @@
+R6#conf t
+R6(config)#int fa0/0
+R6(config-if)#ip add
+R6(config-if)#ip address 172.16.2.2 255.255.255.0
+R6(config-if)#no sh
+R6(config-if)#ex
+R6(config)#int fa1/0
+R6(config-if)#ip add
+R6(config-if)#ip address 172.16.4.1 255.255.255.0
+R6(config-if)#no sh
+R6(config-if)#ex
+R6(config)#ex
+R6(config)#router ospf 1
+R6(config-router)#network 172.16.2.0 0.0.0.255 area 0
+R6(config-router)#network 172.16.4.0 0.0.0.255 area 0
+R6(config-router)#ex
+R6(config)#ex
+R6#wr
+Building configuration...
+[OK]

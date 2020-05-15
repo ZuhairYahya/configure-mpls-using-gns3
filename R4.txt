@@ -1,0 +1,34 @@
+R4#conf t
+R4(config)#int fa0/0
+R4(config-if)#ip add
+R4(config-if)#ip address 10.20.20.2 255.255.255.240
+R4(config-if)#no sh
+R4(config-if)#ex
+R4(config)#int fa1/0
+R4(config-if)#ip add
+R4(config-if)#ip address 83.40.40.1 255.255.255.240
+R4(config-if)#no sh
+R4(config-if)#ex
+R4(config)#ex
+R4(config)#int lo0
+R4(config-if)#ip address 12.12.3.1 255.255.255.0
+R4(config-if)#no sh
+R4(config-if)#ex
+R4(config)#ex
+R4(config)#router ospf 1
+R4(config-router)#network 10.20.20.0 0.0.0.15 area 0
+R4(config-router)#network 83.40.40.0 0.0.0.15 area 0
+R4(config-router)#network 12.12.3.1 0.0.0.255 area 0
+R4(config-router)#ex
+R4(config)#ex
+R4(config)#mpls label protocol ldp
+R4(config)#mpls ldp session protection
+R4(config)#mpls ldp router-id lo0
+R4(config)#ip cef
+R4(config)#router ospf 1
+R4(config-router)#mpls ldp autoconfig area 0
+R4(config-router)#ex
+R4(config)#ex
+R4#wr
+Building configuration...
+[OK]

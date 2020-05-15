@@ -1,0 +1,11 @@
+PC2> ip 172.16.4.2 172.16.4.1 24
+Checking for duplicate address...
+PC1 : 172.16.4.2 255.255.255.0 gateway 172.16.4.1
+
+PC2> show
+
+NAME   IP/MASK              GATEWAY           MAC                LPORT  RHOST:PORT
+PC2    172.16.4.2/24        172.16.4.1        00:50:79:66:68:01  10002  127.0.0.1:10003
+       fe80::250:79ff:fe66:6801/64
+
+PC2>
